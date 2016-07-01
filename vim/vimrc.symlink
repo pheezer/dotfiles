@@ -1,1 +1,56 @@
-/Users/pduvall/.vimrc
+set wrapscan
+set tabstop=4
+"set mouse=a
+set number
+set expandtab
+set tabstop=4
+set history=100
+set incsearch
+set synmaxcol=2048
+set t_Co=256
+set cursorline
+set colorcolumn=80
+
+set ch=2
+set stl=%f\ %m\ %r\ Line:\ %l/%L[%p%%]\ Col:\ %c\ Buf:\ #%n\ [%b][0x%B]
+set laststatus=2
+
+let g:netrw_dirhistmax=0
+let Tlist_GainFocus_On_ToggleOpen=1
+let Tlist_Close_On_Select=1
+let g:NERDTreeQuitOnOpen=1
+
+colorscheme wombat256
+syntax on
+
+" make tab in v mode ident code
+vmap <tab> >gv
+vmap <s-tab> <gv
+nnoremap <silent> <s-t> :TlistToggle<CR>
+nnoremap <C-f> :NERDTreeToggle<CR>
+
+" Perl-centric vim settings
+"
+" column width per best practices
+" autocmd FileType perl set textwidth=78
+
+" check perl code with :make
+autocmd FileType perl set makeprg=perl\ -c\ %\ $*
+autocmd FileType perl set errorformat=%f:%l:%m
+autocmd FileType perl set autowrite
+
+" my perl includes pod
+autocmd FileType perl let perl_include_pod = 1
+
+" syntax color complex things like @{${"foo"}}
+autocmd FileType perl let perl_extended_vars = 1
+
+"Inserting these abbreviations inserts the corresponding Perl statement...
+autocmd FileType perl iab phbp #! /usr/bin/perl
+autocmd FileType perl iab pdbg use Data::Dumper 'Dumper'; warn Dumper [];
+
+"iab papp ^[:r ~/.code_templates/perl_application.pl
+"iab pmod ^[:r ~/.code_templates/perl_module.pm
+
+call pathogen#infect()
+call pathogen#helptags()

@@ -1,1 +1,4 @@
-/Users/pduvall/.bash_vinnward
+ alias vinnward="ssh phil@vinnward.net"
+ alias comrade="ssh phil@comrade.vinnward.net"
+ alias mail.vinnward="ssh phil@mail.vinnward.net"
+ alias home.vinnward="ssh phil@home.vinnward.net -p 1618"

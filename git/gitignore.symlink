@@ -1,1 +1,3 @@
-/Users/pduvall/.gitignore
+.DS_Store
+*~
+*.swp
