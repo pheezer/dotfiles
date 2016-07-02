@@ -1,0 +1,9 @@
+ #stupid functions
+ randnum() {
+    read x;
+    echo $[ $RANDOM % $x];
+ }
+
+ gun() { 
+    [ $[ $RANDOM % 6 ] == 0 ] && echo BANG || echo CLICK;
+ }

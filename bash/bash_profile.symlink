@@ -41,12 +41,6 @@
  export TERM="xterm-color"
  export PS1="\[\e[36;1m\]\u🍺\[\e[32;1m\]  \w ▶︎ \[\e[0m\]"
 
- #misc
- alias weather="curl http://wttr.in/"
- alias myip="curl http://ipv4.icanhazip.com/"
- alias todo="vim $HOME/todo.txt"
- alias runninghot="ps aux |sort -k3 -nr |head -3 |awk '{print \$2,\$3,\$11 }' "
-
  # tab completion check
  if which brew > /dev/null && [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ]; then
     source "$(brew --prefix)/share/bash-completion/bash_completion";
@@ -64,17 +58,5 @@
 
  # tab completion for common apps
  complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall
-
- #stupid functions
- randnum() {
-    read x;
-    echo $[ $RANDOM % $x];
- }
-
- gun() { 
-    [ $[ $RANDOM % 6 ] == 0 ] && echo BANG || echo CLICK;
- }
-source $HOME/.bash_vinnward
-source $HOME/.bash_mt
 
 export PATH="/usr/local/sbin:$PATH"

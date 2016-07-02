@@ -87,3 +87,7 @@ alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v exten
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 
 alias reload="exec $SHELL -l"
+
+alias weather="curl http://wttr.in/"
+
+alias runninghot="ps aux |sort -k3 -nr |head -3 |awk '{print \$2,\$3,\$11 }' "
