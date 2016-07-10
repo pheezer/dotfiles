@@ -1,5 +1,5 @@
  #display motd
- cat /etc/motd
+ cat .motd
  #locale
 
 
