@@ -31,23 +31,25 @@
  #editor
  export EDITOR="vim"
 
- #environemtn
- if test ! $(which brew) && [ $(uname -s) = 'Darwin']; then
+ #environment
+ if test ! $(command -v brew) && [ $(uname -s) = 'Darwin']; then
     $PS_SYMBOL="$(echo -e "\xF0\x9F\x8D\x8E")";
     echo "Needs dotfiles and brew";
  elif [ $(uname -s) = 'Darwin' ]; then
     export PS_SYMBOL="$(echo -e "\xF0\x9F\x8D\xBA\x3A")";
     cat $HOME/.motd 
-fi
+    eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)"
+ fi
  
  if [[ $(hostname -s) = 'omega' ]]; then
-    $PS_SYMBOL = '$PURPLEΩ'
+    export PS_SYMBOL = '$PURPLE\xCE\xA9'
  fi
  
  export CLICOLOR="1" 
  export LSCOLORS="gxfxcxdxbxegedabagacad" 
  export TERM="xterm-color"
- export PS1="\[\e[36;1m\]\u$PS_SYMBOL\[\e[32;1m\]\w ▶︎ \[\e[0m\]"
+ export PS_POINTER=$(echo -e "\xE2\x9C\x92\xEF\xB8\x8E")
+ export PS1="\[\e[36;1m\] \u $PS_SYMBOL \[\e[32;1m\] \w $PS_POINTER  \[\e[0m\]"
 
  # tab completion check
  if which brew > /dev/null && [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ]; then
@@ -66,5 +68,3 @@ fi
 
  # tab completion for common apps
  complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall
-
-eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)"
