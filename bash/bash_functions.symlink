@@ -8,11 +8,12 @@
     [ $[ $RANDOM % 6 ] == 0 ] && echo BANG || echo CLICK;
  }
 
-gpgfile() {
+ #gpg encrypt/decrypt files
+ gpgfile() {
     tar -cz $1 | gpg -c -o $1.tgz.gpg
-}
-degpgfile() {
+ }
+ degpgfile() {
     gpg -d $1 | tar xz
-}
+ }
 
 
