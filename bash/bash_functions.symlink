@@ -1,4 +1,4 @@
- #stupid functions
+ #misc functions
  randnum() {
     read x;
     echo $[ $RANDOM % $x];
@@ -8,11 +8,21 @@
     [ $[ $RANDOM % 6 ] == 0 ] && echo BANG || echo CLICK;
  }
 
+ weather() {
+    if [ -n "$1" ]
+    then
+        curl wttr.in/$1
+    else
+        curl wttr.in/sdf
+    fi
+ }
+
  #gpg encrypt/decrypt files
  gpgfile() {
     tar -cz $1 | gpg -c -o $1.tgz.gpg
  }
- degpgfile() {
+
+ ugpgfile() {
     gpg -d $1 | tar xz
  }
 
