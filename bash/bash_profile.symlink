@@ -37,31 +37,31 @@
     echo "Needs dotfiles and brew";
  elif [ $(uname -s) = 'Darwin' ]; then
     export PS_SYMBOL="$(echo -e "\xF0\x9F\x8D\xBA\x3A")";
-    cat $HOME/.motd 
-    eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)"
+    cat $HOME/.motd; 
+    eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)";
  fi
  
  if [[ $(hostname -s) = 'omega' ]]; then
-    export PS_SYMBOL = '$PURPLE\xCE\xA9'
+    export PS_SYMBOL = '$PURPLE\xCE\xA9';
  fi
  
  export CLICOLOR="1" 
  export LSCOLORS="gxfxcxdxbxegedabagacad" 
  export TERM="xterm-color"
  export PS_POINTER=$(echo -e "\xE2\x9C\x92\xEF\xB8\x8E")
- export PS1="\[\e[36;1m\] \u $PS_SYMBOL \[\e[32;1m\] \w $PS_POINTER  \[\e[0m\]"
+ export PS1="\[\e[36;1m\] \u $PS_SYMBOL \[\e[32;1m\] \w $PS_POINTER  \[\e[0m\]";
 
  # tab completion check
  if which brew > /dev/null && [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ]; then
     source "$(brew --prefix)/share/bash-completion/bash_completion";
  elif [ -f /etc/bash_completion ]; then
     source /etc/bash_completion;
- fi;
+ fi
 
  # tab completion g is git
  if type _git &> /dev/null && [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
     complete -o default -o nospace -F _git g;
- fi;
+ fi
 
  # tab completion for ssh hostnames
  [ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
