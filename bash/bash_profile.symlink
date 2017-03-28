@@ -26,7 +26,7 @@
  export LESS_TERMCAP_us=$'\e[4;38;5;146m' # begin underline
 
  #path
- export PATH="$HOME/python/bin:$HOME/bin:/usr/local/sbin:$PATH"
+ export PATH="/usr/local/sbin:/usr/local/bin:$HOME/usr/local/opt/openssl/bin:$HOME/python/bin:$HOME/bin:$PATH"
 
  #editor
  export EDITOR="vim"
