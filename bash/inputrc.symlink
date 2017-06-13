@@ -1,0 +1,6 @@
+#"\e[5C": forward-word
+#"\e[5D": backward-word
+# From http://www.ukuug.org/events/linux2003/papers/bash_tips/
+# Incremental searching with Up and Down. Type 'ssh <up>' to get the last 'ssh' command you used
+#"\e[A": history-search-backward
+#"\e[B": history-search-forward
