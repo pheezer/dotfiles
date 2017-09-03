@@ -37,7 +37,8 @@
  elif [ $(uname -s) = 'Darwin' ]; then
     export PS_SYMBOL="$(echo -e '\xF0\x9F\x8D\xBA\x3A')";
     cat $HOME/.motd;
-    echo  $(hostname) / $( date '+%D %T') / $(dig +short myip.opendns.com @resolver1.opendns.com) |toilet -t -f term -F border --gay;
+    #echo  $(hostname) / $( date '+%D %T') / $(dig +short myip.opendns.com @resolver1.opendns.com) |toilet -t -f term -F border --gay;
+    echo  manatee / $( date '+%D %T') |toilet -t -f term -F border --gay;
     eval "$(perl -I $HOME/perl5/lib/perl5 -Mlocal::lib)";
  fi
  
