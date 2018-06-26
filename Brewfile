@@ -94,6 +94,7 @@ brew "gsl"
 brew "gtk+"
 brew "hackrf", args: ["HEAD"]
 brew "hamlib"
+brew "htop"
 brew "httperf"
 brew "imagemagick"
 brew "imagesnap"
