@@ -1,3 +1,10 @@
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+
+set -g @plugin 'jimeh/tmux-themepack'
+set -g @themepack 'powerline/double/green'
+
 # alternative pane switching with arrow
 bind -n M-Left select-pane -L
 bind -n M-Right select-pane -R
@@ -25,3 +32,5 @@ setw -g mode-keys vi
 # update default binding of enter key to also use copy-pipe
 #unbind -t vi-copy Enter
 #bind-key -t vi-copy Enter copy-pipe "reattach-to-user-namespace pbcopy"
+
+run '~/.tmux/plugins/tpm/tpm'

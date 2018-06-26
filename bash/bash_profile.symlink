@@ -25,14 +25,14 @@
  export LESS_TERMCAP_us=$(printf '\e[04;36m') # enter underline mode – cyan
  
  #path
- export PATH="/usr/local/sbin:/usr/local/bin:$HOME/usr/local/opt/openssl/bin:$HOME/python/bin:$HOME/bin:$PATH"
+ export PATH="/usr/local/sbin:/usr/local/bin:$HOME/usr/local/opt/openssl/bin:$HOME/python/bin:$HOME/go/bin:$HOME/bin:$PATH"
 
  #editor
  export EDITOR="vim"
 
  #environment
  if test ! $(command -v brew) && [ $(uname -s) = 'Darwin']; then
-    export $PS_SYMBOL="$(echo -e '\xF0\x9F\x8D\x8E')";
+    export PS_SYMBOL="$(echo -e '\xF0\x9F\x8D\x8E')";
     echo "Needs dotfiles and brew";
  elif [ $(uname -s) = 'Darwin' ]; then
     export PS_SYMBOL="$(echo -e '\xF0\x9F\x8D\xBA\x3A')";
