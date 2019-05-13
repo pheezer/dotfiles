@@ -30,6 +30,9 @@
  #editor
  export EDITOR="vim"
 
+ #gpg
+ export GPG_TTY=$(tty)
+
  #environment
  if test ! $(command -v brew) && [ $(uname -s) = 'Darwin']; then
     export PS_SYMBOL="$(echo -e '\xF0\x9F\x8D\x8E')";
