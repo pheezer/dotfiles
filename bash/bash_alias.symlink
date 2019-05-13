@@ -90,6 +90,7 @@ alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resource
 
 alias reload="exec $SHELL -l"
 
-alias weather="curl http://wttr.in/"
+#replaced with function
+#alias weather="curl http://wttr.in/"
 
 alias runninghot="ps aux |sort -k3 -nr |head -3 |awk '{print \$2,\$3,\$11 }' "
