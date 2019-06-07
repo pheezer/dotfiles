@@ -53,7 +53,7 @@
  export LSCOLORS="gxfxcxdxbxegedabagacad"
  #export TERM="xterm"
  export PS_POINTER="$(echo -e '\xE2\x9C\x92\xEF\xB8\x8E')"
- export PS1="\[$(tput bold)\]\[\033[38;5;81m\]\u\[$(tput sgr0)\] ${PS_SYMBOL} \[\033[38;5;225m\]\w\[$(tput sgr0)\] ${PS_POINTER} \[\e[0m\]\[$(tput sgr0)\]"
+ export PS1="\[$(tput bold)\]\[\033[38;5;81m\]\u\[$(tput sgr0)\] \[${PS_SYMBOL}\] \[\033[38;5;225m\]\w\[$(tput sgr0)\] \[${PS_POINTER}\] \[\e[0m\]\[$(tput sgr0)\]"
 
  # tab completion check
  if which brew > /dev/null && [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ]; then
