@@ -94,3 +94,5 @@ alias reload="exec $SHELL -l"
 #alias weather="curl http://wttr.in/"
 
 alias runninghot="ps aux |sort -k3 -nr |head -3 |awk '{print \$2,\$3,\$11 }' "
+
+alias rs="rustc $* --color always 2>&1 |more"

@@ -1,4 +1,8 @@
 #misc functions
+ function duls {
+    paste <( du -hs -- "$@" | cut -f1 ) <( ls -ld -- "$@" )
+ }
+
  randnum() {
     read x;
     echo $[ $RANDOM % $x];
