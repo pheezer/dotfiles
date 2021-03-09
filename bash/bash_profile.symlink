@@ -1,7 +1,21 @@
+  #boo zsh
+ export BASH_SILENCE_DEPRECATION_WARNING=1 
+
  #locale
  for file in ~/.bash_{alias,functions,vinnward,mt}; do
     [ -r "$file" ] && [ -f "$file" ] && source "$file";
  done;
+
+ #history
+ export HISTFILESIZE=2000
+ export HISTSIZE=2000
+
+ export LANG=en_US.UTF-8
+ export TERM=xterm-256color
+
+ #export TERM="xterm"
+ #export TERM="xterm"
+ #export TERM="xterm"
 
  #colors
  export RESET='\e[0m'
@@ -14,9 +28,6 @@
  export CYAN='\e[0;36m'
  export WHITE='\e[0;37m'
 
- export HISTFILESIZE=2000
- export HISTSIZE=2000
-
  export LESS_TERMCAP_md=$(printf '\e[01;35m') # enter double-bright mode – bold, magenta
  export LESS_TERMCAP_me=$(printf '\e[0m') # turn off all appearance modes (mb, md, so, us)
  export LESS_TERMCAP_se=$(printf '\e[0m') # leave standout mode
@@ -25,7 +36,7 @@
  export LESS_TERMCAP_us=$(printf '\e[04;36m') # enter underline mode – cyan
  
  #path
- export PATH="/usr/local/sbin:/usr/local/bin:$HOME/usr/local/opt/openssl/bin:$HOME/python/bin:$HOME/go/bin:$HOME/bin:$PATH"
+ export PATH="/usr/local/sbin:/usr/local/bin:$HOME/usr/local/opt/openssl/bin:$HOME/python/bin:$HOME/go/bin:$HOME/bin:/usr/local/opt/curl/bin:/usr/local/opt/avr-gcc@7/bin:$PATH"
 
  #editor
  export EDITOR="vim"
@@ -36,12 +47,14 @@
  #environment
  if test ! $(command -v brew) && [ $(uname -s) = 'Darwin']; then
     export PS_SYMBOL="$(echo -e '\xF0\x9F\x8D\x8E')";
+#    export  PS_SYMBOL="🍏"
     echo "Needs dotfiles and brew";
  elif [ $(uname -s) = 'Darwin' ]; then
     export PS_SYMBOL="$(echo -e '\xF0\x9F\x8D\xBA\x3A')";
+#   export PS_SYMBOL="🍺"
     cat $HOME/.motd;
-    #echo  $(hostname) / $( date '+%D %T') / $(dig +short myip.opendns.com @resolver1.opendns.com) |toilet -t -f term -F border --gay;
-    echo  manatee / $( date '+%D %T') |toilet -t -f term -F border --gay;
+    echo  $(hostname) ::: $( date '+%D %T') ::: $(dig +short myip.opendns.com @resolver1.opendns.com) |toilet -t -f term --gay;
+    #echo $( date '+%D %T') |toilet -t -f term -F border --gay;
     eval "$(perl -I $HOME/perl5/lib/perl5 -Mlocal::lib)";
  fi
  
@@ -51,10 +64,10 @@
  
  export CLICOLOR="1" 
  export LSCOLORS="gxfxcxdxbxegedabagacad"
- #export TERM="xterm"
  export PS_POINTER="$"
- export PS1="\[$(tput bold)\]\[\033[38;5;81m\]\u\[$(tput sgr0)\] \[${PS_SYMBOL}\] \[\033[38;5;225m\]\w\[$(tput sgr0)\] \[${PS_POINTER}\] \[\e[0m\]\[$(tput sgr0)\]"
-
+ #export PS1="\[$PURPLE\]\u\[$(tput sgr0)\] \[$CYAN\]\W\[$(tput sgr0)\] \[$WHITE\]}\]\[$(tput sgr0)\] "
+ export PS1="\[$(tput bold)\]\[\033[38;5;219m\]\u${PS_SYMBOL}\[$(tput sgr0)\]:\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;149m\]\w\[$(tput sgr0)\] \[$(tput sgr0)\]"
+ export PS1_DEBUG=false
  # tab completion check
  if which brew > /dev/null && [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ]; then
     source "$(brew --prefix)/share/bash-completion/bash_completion";
@@ -68,7 +81,12 @@
  fi
 
  # tab completion for ssh hostnames
- #[ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
+ [ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
 
  # tab completion for common apps
  complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall
+
+ #ruby version manager
+ [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+export PATH="$HOME/.cargo/bin:$PATH"

@@ -1,48 +1,76 @@
-# This is the default .slate file.
-# If no ~/.slate file exists this is the file that will be used.
-
+#globals
 config defaultToCurrentScreen true
+config secondsBeforeRepeat 0.4
+config secondsBetweenRepeat 0.1
+config keyboardLayout "qwerty"
 config nudgePercentOf screenSize
 config resizePercentOf screenSize
 
+# hyper key
+alias hyper ctrl;alt;cmd
+
+# monitor aliases
+alias mon-macbook 1280x800
+alias mon-dell 3440x1440
+
+# apps
+alias editor "Sublime Text"
+bind z:alt;shift focus ${editor}
+
+alias terminal "Terminal"
+bind x:alt;shift focus ${terminal}
+
+alias browser "Firefox"
+bind c:alt;shift focus ${browser}
+
+#slate
+#config windowHintsShowIcons true
+#config windowHintsSpread true
+#config windowHintsIgnoreHiddenWindows false
+bind h:cmd;shift hint ASDFJKLQWERTYUIOPCVBNG
+
+bind g:cmd grid padding:5 0:6,2 1:8,3
+
+#bind tab:cmd switch
+
+bind s:${hyper} relaunch
+
 # Resize Bindings
-#bind right:alt       resize +10% +0
-#bind left:alt        resize -10% +0
-#bind up:alt          resize +0   -10%
-#bind down:alt        resize +0   +10%
-#bind right:ctrl;alt  resize -10% +0 bottom-right
-#bind left:ctrl;alt   resize +10% +0 bottom-right
-#bind up:ctrl;alt     resize +0   +10% bottom-right
-#bind down:ctrl;alt   resize +0   -10% bottom-right
+bind right:alt       resize +10% +0
+bind left:alt        resize -10% +0
+bind up:alt          resize +0   -10%
+bind down:alt        resize +0   +10%
+bind right:ctrl;alt  resize -10% +0 bottom-right
+bind left:ctrl;alt   resize +10% +0 bottom-right
+bind up:ctrl;alt     resize +0   +10% bottom-right
+bind down:ctrl;alt   resize +0   -10% bottom-right
 
-# Push Bindings
-bind right:ctrl;cmd  push right bar-resize:screenSizeX/3
-bind left:ctrl;cmd   push left  bar-resize:screenSizeX/3
-bind up:ctrl;cmd     push up    bar-resize:screenSizeY/2
-bind down:ctrl;cmd   push down  bar-resize:screenSizeY/2
+# push bindings
+#bind right:ctrl;cmd  push right bar-resize:screensizex/3
+#bind left:ctrl;cmd   push left  bar-resize:screensizex/3
+#bind up:ctrl;cmd     push up    bar-resize:screensizey/2
+#bind down:ctrl;cmd   push down  bar-resize:screensizey/2
 
-# Nudge Bindings
+# nudge bindings
 bind right:shift;alt nudge +10% +0
 bind left:shift;alt  nudge -10% +0
 bind up:shift;alt    nudge +0   -10%
 bind down:shift;alt  nudge +0   +10%
 
-# Throw Bindings
+#throw bindings
 bind 1:ctrl;alt         throw 0 resize
 bind 2:ctrl;alt         throw 1 resize
 bind 3:ctrl;alt         throw 2 resize
+
 bind right:ctrl;alt;cmd throw right resize
 bind left:ctrl;alt;cmd  throw left  resize
 bind up:ctrl;alt;cmd    throw up    resize
 bind down:ctrl;alt;cmd  throw down  resize
 
-# Focus Bindings
+#focus bindings
 bind right:cmd    focus right
 bind left:cmd     focus left
 bind up:cmd       focus up
 bind down:cmd     focus down
 bind up:cmd;alt   focus behind
 bind down:cmd;alt focus behind
-
-# Window Hints
-bind esc:cmd hint

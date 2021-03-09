@@ -30,4 +30,7 @@
     gpg -d $1 | tar xz
  }
 
+ getmusic() {
+     youtube-dl --extract-audio --audio-format vorbis -o '$HOME/Music/%(title)s.%(ext)s' $1
+ }
 
