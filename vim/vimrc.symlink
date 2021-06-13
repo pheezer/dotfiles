@@ -1,70 +1,50 @@
-set wrapscan
-set tabstop=4
-"set mouse=a
-set number
-set expandtab
-set tabstop=4
-set history=100
-set incsearch
-set synmaxcol=2048
-set t_Co=256
-set cursorline
-set colorcolumn=80
-
-set ch=2
-set stl=%f\ %m\ %r\ Line:\ %l/%L[%p%%]\ Col:\ %c\ Buf:\ #%n\ [%b][0x%B]
-set laststatus=2
-
-let g:netrw_dirhistmax=0
-let Tlist_GainFocus_On_ToggleOpen=1
-let Tlist_Close_On_Select=1
-let g:NERDTreeQuitOnOpen=1
-
-colorscheme wombat256
 syntax on
 
-" make tab in v mode ident code
-vmap <tab> >gv
-vmap <s-tab> <gv
-nnoremap <silent> <s-t> :TlistToggle<CR>
-nnoremap <C-f> :NERDTreeToggle<CR>
+set noerrorbells
+set tabstop=4 softtabstop=4
+set shiftwidth=4
+set expandtab
+set smartindent
+set nu
+set nowrap
+set smartcase
+set noswapfile
+set nobackup
+set undodir=~/.vim/undo
+set undofile
+set incsearch
+set backspace=indent,eol,start
 
-" Perl-centric vim settings
-"
-" column width per best practices
-" autocmd FileType perl set textwidth=78
+set colorcolumn=80
+highlight ColorColumn ctermbg=0 guibg=lightgrey
 
-" check perl code with :make
-autocmd FileType perl set makeprg=perl\ -c\ %\ $*
-autocmd FileType perl set errorformat=%f:%l:%m
-autocmd FileType perl set autowrite
+call plug#begin('~/.vim/plugged')
 
-" my perl includes pod
-autocmd FileType perl let perl_include_pod = 1
+Plug 'morhetz/gruvbox'
+Plug 'tpope/vim-fugitive'
+Plug 'vim-utils/vim-man'
+Plug 'Valloric/YouCompleteMe'
+Plug 'mbbill/undotree'
+Plug 'jremmen/vim-ripgrep'
+Plug 'rust-lang/rust.vim'
+Plug 'preservim/nerdtree'
 
-" syntax color complex things like @{${"foo"}}
-autocmd FileType perl let perl_extended_vars = 1
+call plug#end()
 
-"Inserting these abbreviations inserts the corresponding Perl statement...
-autocmd FileType perl iab phbp #! /usr/bin/perl
-autocmd FileType perl iab pdbg use Data::Dumper 'Dumper'; warn Dumper [];
+colorscheme gruvbox
+set background=dark
 
-augroup encrypted
-  au!
-  autocmd BufReadPre,FileReadPre *.gpg set viminfo=
-  autocmd BufReadPre,FileReadPre *.gpg set noswapfile
-  autocmd BufReadPre,FileReadPre *.gpg set bin
-  autocmd BufReadPre,FileReadPre *.gpg let ch_save = &ch|set ch=2
-  autocmd BufReadPost,FileReadPost *.gpg '[,']!gpg --decrypt 2> /dev/null
-  autocmd BufReadPost,FileReadPost *.gpg set nobin
-  autocmd BufReadPost,FileReadPost *.gpg let &ch = ch_save|unlet ch_save
-  autocmd BufReadPost,FileReadPost *.gpg execute ":doautocmd BufReadPost " . expand("%:r")
-  autocmd BufWritePre,FileWritePre *.gpg '[,']!gpg --default-recipient-self -ae 2>/dev/null
-  autocmd BufWritePost,FileWritePost *.gpg u
-augroup END
+let mapleader = " "
 
-"iab papp ^[:r ~/.code_templates/perl_application.pl
-"iab pmod ^[:r ~/.code_templates/perl_module.pm
+nnoremap <leader>h :wincmd h<CR>
+nnoremap <leader>l :wincmd l<CR>
+nnoremap <leader>j :wincmd j<CR>
+nnoremap <leader>k :wincmd k<CR>
+nnoremap <leader>u :UndotreeShow<CR>
+nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 40<CR>
+nnoremap <leader>ps :Rg<SPACE>
+nnoremap <silent> <leader>+ :vertical resize +5<CR>
+nnoremap <silent> <leader>- :vertical resize -5<CR>
 
-call pathogen#infect()
-call pathogen#helptags()
+nnoremap <silent> <leader>gd :YcmCompleter GoTo<CR>
+nnoremap <silent> <leader>gf :YcmCompleter FixIt<CR>
