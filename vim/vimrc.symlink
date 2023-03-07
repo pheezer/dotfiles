@@ -29,8 +29,9 @@ Plug 'mbbill/undotree'
 Plug 'rust-lang/rust.vim'
 Plug 'preservim/nerdtree'
 Plug 'bagrat/vim-buffet'
-
+Plug 'esensar/nvim-dev-container'
 Plug 'ryanoasis/vim-devicons'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 call plug#end()
 
